@@ -5,14 +5,14 @@ use std::{
 
 static MAP_CAPACITY: usize = 16;
 
-#[derive(Debug)]
+#[derive(Debug, Hash, Clone, PartialEq)]
 struct Entry<K, V> {
     hash: u64,
     key: K,
     value: V
 }
 
-#[derive(Debug)]
+#[derive(Debug, Hash, Clone, PartialEq)]
 pub struct MyMap<K, V> {
     entries: Vec<Vec<Entry<K, V>>>
 }
@@ -84,7 +84,7 @@ pub mod tests {
     use super::*;
 
     #[test]
-    pub fn test() {
+    pub fn test_mymap() {
         let mut my_map: MyMap<i32, &str> = MyMap::new();
         assert!(my_map.get(&42).is_none());
 
